@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
         {
             _categoryService = categoryService;
         }
-        [HttpGet(template:"gelall")]
+        [HttpGet(template:"getall")]
         public IActionResult GetAll()
         {
             var result = _categoryService.GetList();

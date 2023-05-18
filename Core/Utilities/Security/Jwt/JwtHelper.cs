@@ -23,10 +23,11 @@ namespace Core.Utilities.Security.Jwt
             //    .Build();
 
             Configuration = configuration;
-            _tokenOptions = new TokenOptions { SecurityKey = "" 
-            ,Issuer=""
-            ,Audience=""
-            ,AccessTokenExpiration=15};
+            _tokenOptions = new TokenOptions { 
+                SecurityKey = "mysecretkeymysecretkeymysecretkey",
+                Issuer= "vvv.nihat.kom",
+                Audience= "www.nihat.kom",
+                AccessTokenExpiration=10};
             //Configuration.GetSection(key: "TokenOptions").Bind <TokenOptions>();
             //_tokenOptions = Configuration.GetSection("TokenOptions")
             _accessTokenExpretions = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
@@ -62,7 +63,7 @@ namespace Core.Utilities.Security.Jwt
                 expires: _accessTokenExpretions,
                 notBefore:DateTime.Now,
                 claims:SetClaims(user,operationClaims),
-                signingCredentials:signingCredentials
+                signingCredentials:signingCredentials 
                 );
             return jwt;
         }
